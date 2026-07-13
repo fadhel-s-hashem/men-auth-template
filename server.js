@@ -1,3 +1,5 @@
+
+
 const dns = require("node:dns");
 
 dns.setServers(["8.8.8.8", "1.1.1.1"])
@@ -35,6 +37,8 @@ app.get("/", (req, res) => {
 
 app.get('/auth/home',authCtrl.home)
 app.get('/auth/sign-up', authCtrl.showSignUpForm)
+
+app.post('/auth/sign-up', authCtrl.signUP)
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
