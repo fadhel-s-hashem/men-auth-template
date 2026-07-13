@@ -11,6 +11,8 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 const { get } = require("node:http");
 
+const authCtrl = require('./controllers/auth')
+
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -31,6 +33,8 @@ app.get("/", (req, res) => {
     res.render ('home.ejs')
 })
 
+app.get('/auth/home',authCtrl.home)
+app.get('/auth/sign-up', authCtrl.showSignUpForm)
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
