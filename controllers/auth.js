@@ -41,7 +41,7 @@ const signIn = async (req, res) =>{
     if (!userInDatabase) {
         return res.send('User dont exist')
     }
-    // check if password match
+    // check if (password) match
     const validPassword = bcrypt.compareSync(req.body.password , userInDatabase.password) 
 
     if(!validPassword){

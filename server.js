@@ -1,5 +1,4 @@
 
-
 const dns = require("node:dns");
 
 dns.setServers(["8.8.8.8", "1.1.1.1"])
@@ -11,6 +10,7 @@ const app = express();
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
+const session = require('express-session')
 const { get } = require("node:http");
 
 const authCtrl = require('./controllers/auth')
