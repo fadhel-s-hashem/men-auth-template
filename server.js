@@ -1,3 +1,6 @@
+const dns = require("node:dns");
+
+dns.setServers(["8.8.8.8", "1.1.1.1"])
 const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
@@ -6,6 +9,7 @@ const app = express();
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
+const { get } = require("node:http");
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -22,6 +26,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 // Morgan for logging HTTP requests
 app.use(morgan('dev'));
+
+app.get("/", (req, res) => {
+    res.render ('home.ejs')
+})
+
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
