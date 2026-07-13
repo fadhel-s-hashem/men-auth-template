@@ -38,7 +38,9 @@ app.get("/", (req, res) => {
 app.get('/auth/home',authCtrl.home)
 app.get('/auth/sign-up', authCtrl.showSignUpForm)
 
-app.post('/auth/sign-up', authCtrl.signUP)
+app.post('/auth/sign-up', authCtrl.signUp)
+app.get('/auth/sign-in' , authCtrl.showSignInForm)
+app.post ('/auth/sign-in' , authCtrl.signIn)
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
